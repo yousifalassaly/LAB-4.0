@@ -17,4 +17,19 @@ ________________________________________________________________________________
 ## Enable Docker using the system control command: 
     - sudo systemctl start docker
     - sudo systemctl enable docker
+   ### Verify docker is working and enabled
+        - Verify using: docker --version
+
+## Create a Docker Volume use the command:
+    docker volume create <volume_name>
+
+### verify you have successfully created a Docker volume, prompt Docker to list all available volumes with:
+        -docker volume list
+
+### To run a container and mount a data volume to it, follow the basic syntax:
+    -docker run -d \
+    --name volume-test \
+    -v [volume name]:/data \
+
+
 
