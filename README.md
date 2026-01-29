@@ -30,6 +30,44 @@ ________________________________________________________________________________
     -docker run -d \
     --name volume-test \
     -v [volume name]:/data \
+    - busybox sleep 3600 
+
+    Verify container running using: docker ps
+
+
+
+### Write data to volume:
+    -docker exec volume-test sh -c "echo 'Docker volumes persist data' > /data/test.txt"
+    -Confirm: docker exec volume-test cat /data/test.txt
+
+## Remove the Container:
+    -docker stop volume-test
+    -docker rm volume-test
+    
+    Verify the container is gone by using: 
+        -docker ps -a
+
+### Reuse the Volume with a new container:
+    docker run --rm \
+    
+    -v <volume name>:/data \
+    
+    busybox cat /data/test.txt
+
+    Output should be: Docker volumes persist data
+
+    Clean up
+
+    
+## Run commands to clean up:
+    docker volume rm <volume name>
+    
+    Verify: docker volume ls
+
+
+
+## Summary 
+### In this lab, you successfully demonstrated the decoupling of data from infrastructure. By using Docker Volumes, you moved beyond "temporary" containers and built a persistent storage solution.
 
 
 
